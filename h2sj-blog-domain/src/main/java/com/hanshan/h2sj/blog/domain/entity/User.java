@@ -1,11 +1,16 @@
 package com.hanshan.h2sj.blog.domain.entity;
 
 
+import lombok.Data;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "h2sj_user")
-public class User {
+@Data
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,19 +20,25 @@ public class User {
     @Column(name = "user_account")
     private String userAccount;
 
-    public Long getUserId() {
-        return userId;
-    }
+    @Column(name = "user_password")
+    private String userPassword;
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+    @Column(name = "user_name")
+    private String userName;
 
-    public String getUserAccount() {
-        return userAccount;
-    }
+    @Column(name = "user_portrait")
+    private String userPortrait;
 
-    public void setUserAccount(String userAccount) {
-        this.userAccount = userAccount;
-    }
+    @Column(name = "user_birthday")
+    private Date userBirthday;
+
+    @Column(name = "user_gender")
+    private Integer userGender;
+
+    @Column(name = "user_email")
+    private String userEmail;
+
+    @Column(name = "user_phone",unique = true)
+    private String userPhone;
+
 }

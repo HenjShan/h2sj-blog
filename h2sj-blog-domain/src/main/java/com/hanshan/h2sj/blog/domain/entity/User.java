@@ -5,7 +5,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "h2sj_user")
@@ -40,5 +42,8 @@ public class User implements Serializable {
 
     @Column(name = "user_phone",unique = true)
     private String userPhone;
+
+    @OneToMany(mappedBy = "commentAuthor",fetch = FetchType.LAZY,targetEntity = Comment.class)
+    private List<Comment> comments = new ArrayList<>();
 
 }
